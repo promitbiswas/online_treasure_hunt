@@ -25,7 +25,7 @@ def index(request):
 	else:
 		return render_to_response('index.html', {} , context_instance=RequestContext(request))
 
-"""@facebook_authorization_required"""
+@facebook_authorization_required
 def authorize(request):
 	ui = userInfo.objects.filter(user = request.facebook.user)
 	if len(ui):
