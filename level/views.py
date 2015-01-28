@@ -58,7 +58,7 @@ def check_answer(request):
 		graph = GraphAPI(token)
 		profile_id = request.facebook.user.facebook_id
 		try:
-			graph.post(path = str(profile_id)+'/feed', message = 'I just crossed level ' +str(user_level) +'!! in MUKTI\'s Online treasure hunt.', caption = 'Online treasure hunt' , link = 'treasurehunt.mkti.in')
+			graph.post(path = str(profile_id)+'/feed', message = 'I just crossed level ' +str(user_level) +' in MUKTI\'s Online Treasure Hunt.', caption = 'Online Treasure Hunt - Mukti 2015' , link = 'treasurehunt.mkti.in')
 		except:
 			pass
 		ui = userInfo.objects.get(user = request.facebook.user)
