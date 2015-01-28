@@ -542,7 +542,7 @@ fieldset#body {
 .profile_picture > a > img{
 	display: block;
 	margin:0 auto;
-	width: 2em;
+	width: 3em;
 	border:5px solid #50597B;
     border-radius:8em;
     -webkit-border-radius:8em;
@@ -1053,7 +1053,7 @@ fieldset#body {
 {
 	min-height: 150px;
 	margin-bottom: 30px;
-	padding: 1em;
+	padding: 3em;
 }
 #compt_image img
 {
@@ -1077,6 +1077,23 @@ fieldset#body {
 	color: #fff;
 	font-size: 1.5em;
 }
+.rndm1
+{
+	margin-top: 30px;
+}
+.rndm2
+{
+	width: 53% !important;
+}
+.rndm3
+{
+	width: 40% !important;
+}
+.rndm4
+{
+	margin: 25px 100px !important;
+}
+
 /**** Responsice Layout *****/
 @media only screen and (max-width: 1680px){
    .graph canvas {
