@@ -12,7 +12,7 @@ from fandjango.decorators import facebook_authorization_required
 from facepy import GraphAPI
 import random
 
-"""@facebook_authorization_required"""
+@facebook_authorization_required
 def level_view(request,slug):
 	
 	curr_level = level.objects.get(slug = slug)
@@ -47,7 +47,7 @@ def level_scrape(request):
 		return HttpResponse(messages[str(request.GET['score'])])
 	except:
 		return HttpResponse(random.choice(['add','subtract']) + " " + str(random.randint(596859,928756)))
-"""@facebook_authorization_required"""
+@facebook_authorization_required
 def check_answer(request):
 
 	given_answer = request.POST['answer']

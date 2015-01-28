@@ -264,7 +264,6 @@ fieldset#body {
 }
 /******* Carts *********/
 .chart{
-	margin-top:30px;
 	background: #394264;
 	text-align: center;
 	padding: 2em 0 0 0;
@@ -293,6 +292,12 @@ fieldset#body {
 }
 .diagram{
 	position:relative;
+}
+.diagram h4
+{
+	position: absolute;
+	top: 44%;
+	left: 42%;
 }
 .chart canvas{
 	padding:2em 0;
@@ -1053,7 +1058,7 @@ fieldset#body {
 {
 	min-height: 150px;
 	margin-bottom: 30px;
-	padding: 3em;
+	padding: 2em;
 }
 #compt_image img
 {
@@ -1084,6 +1089,7 @@ fieldset#body {
 .rndm2
 {
 	width: 53% !important;
+	margin-left: 0 !important;
 }
 .rndm3
 {
@@ -1093,7 +1099,14 @@ fieldset#body {
 {
 	margin: 25px 100px !important;
 }
-
+.user-info h4
+{
+	float: left;
+}
+.user-info ul
+{
+	float: right;
+}
 /**** Responsice Layout *****/
 @media only screen and (max-width: 1680px){
    .graph canvas {
