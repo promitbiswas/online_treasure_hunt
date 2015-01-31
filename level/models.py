@@ -1,6 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
-
+from fandjango.models import User
 
 class level(models.Model):
 	number = models.IntegerField()
@@ -14,3 +13,9 @@ class level(models.Model):
 
 	def __unicode__(self):
 		return self.slug
+
+class over(models.Model):
+	winner = models.ForeignKey(User)
+
+	def __unicode__(self):
+		return self.winner.first_name

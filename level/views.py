@@ -6,15 +6,20 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login
 from django import forms
 from player.models import userInfo
-from level.models import level
+from level.models import level, over
 from django.utils.safestring import mark_safe
 from fandjango.decorators import facebook_authorization_required
 from facepy import GraphAPI
 import random
 
+
+
 @facebook_authorization_required
 def level_view(request,slug):
 	
+	if over.objects.all().exists():
+		return HttpResponse('The Hunt is Over!')
+
 	curr_level = level.objects.get(slug = slug)
 	ui = userInfo.objects.get(user = request.facebook.user)
 	if ui.max_level < curr_level.number:
@@ -47,8 +52,11 @@ def level_scrape(request):
 		return HttpResponse(messages[str(request.GET['score'])])
 	except:
 		return HttpResponse(random.choice(['add','subtract']) + " " + str(random.randint(596859,928756)))
+
 @facebook_authorization_required
 def check_answer(request):
+	if over.objects.all().exists():
+		return HttpResponse('The Hunt is Over.')
 
 	given_answer = request.POST['answer']
 	user_level = request.POST['level']
@@ -57,8 +65,18 @@ def check_answer(request):
 		token =	request.facebook.user.oauth_token.token
 		graph = GraphAPI(token)
 		profile_id = request.facebook.user.facebook_id
+		msg_win =  'I just won MUKTI 2015\'s Online Treasure Hunt.'
+		msg_pass =  'I just crossed level ' +str(user_level) +' in MUKTI\'s Online Treasure Hunt.'
 		try:
-			graph.post(path = str(profile_id)+'/feed', message = 'I just crossed level ' +str(user_level) +' in MUKTI\'s Online Treasure Hunt.', caption = 'Online Treasure Hunt - Mukti 2015' , link = 'treasurehunt.mkti.in')
+			if level.objects.filter(number = curr_level.number+1).exists():
+				graph.post(path = str(profile_id)+'/feed', message = msg_pass, caption = 'Online Treasure Hunt - Mukti 2015' , link = 'treasurehunt.mkti.in')
+			else:
+				ov = over()
+				ov.winner = request.facebook.user
+				ov.save()
+				graph.post(path = str(profile_id)+'/feed', message = msg_win, caption = 'Online Treasure Hunt - Mukti 2015' , link = 'treasurehunt.mkti.in')
+
+
 		except:
 			pass
 		ui = userInfo.objects.get(user = request.facebook.user)
