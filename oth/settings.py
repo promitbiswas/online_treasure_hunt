@@ -17,7 +17,7 @@ DATABASES = {
         'NAME': 'oth_2015',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'root',
-        'PASSWORD': 'mukti123!',
+        'PASSWORD': 'c2h5oh',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                     # Set to empty string for default.
     }
@@ -135,9 +135,9 @@ TEMPLATE_DIRS = (
 
 FACEBOOK_APPLICATION_ID = '183216621874530'
 FACEBOOK_APPLICATION_SECRET_KEY = '60d4f52542b5fb445a08c49449982163'
-FACEBOOK_APPLICATION_NAMESPACE = 'muktinitdurgapur'
+FACEBOOK_APPLICATION_NAMESPACE = 'recstacynitdurgapur'
 FACEBOOK_APPLICATION_INITIAL_PERMISSIONS = ['read_stream', 'publish_stream']
-FANDJANGO_SITE_URL = 'http://treasurehunt.mkti.in'
+FANDJANGO_SITE_URL = 'http://localhost:8000'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
