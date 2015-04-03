@@ -6,17 +6,15 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login
 from django import forms
 from player.models import userInfo
-from level.models import level, over
+from level.models import level
 from django.utils.safestring import mark_safe
 from fandjango.decorators import facebook_authorization_required
 from facepy import GraphAPI
 import random
 
-
-
 @facebook_authorization_required
 def level_view(request,slug):
-
+	
 	curr_level = level.objects.get(slug = slug)
 	ui = userInfo.objects.get(user = request.facebook.user)
 	if ui.max_level < curr_level.number:
@@ -49,10 +47,8 @@ def level_scrape(request):
 		return HttpResponse(messages[str(request.GET['score'])])
 	except:
 		return HttpResponse(random.choice(['add','subtract']) + " " + str(random.randint(596859,928756)))
-
 @facebook_authorization_required
 def check_answer(request):
-
 
 	given_answer = request.POST['answer']
 	user_level = request.POST['level']
@@ -61,10 +57,8 @@ def check_answer(request):
 		token =	request.facebook.user.oauth_token.token
 		graph = GraphAPI(token)
 		profile_id = request.facebook.user.facebook_id
-		msg_pass =  'I just crossed level ' +str(user_level) +' in Recstacy\'s Caught In The Chronicle.'
 		try:
-			
-				graph.post(path = str(profile_id)+'/feed', message = msg_pass, caption = 'Caught In The Chronicle - Recstacy 2015' , link = 'chronicle.recstacy.in')
+			graph.post(path = str(profile_id)+'/feed', message = 'I just crossed level ' +str(user_level) +' in Recstacy\'s Caught In The Chronicle.', caption = 'Caught In The Chronicle' , link = 'chronicle.recstacy.in')
 		except:
 			pass
 		ui = userInfo.objects.get(user = request.facebook.user)
