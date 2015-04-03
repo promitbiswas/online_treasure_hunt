@@ -64,7 +64,7 @@ def check_answer(request):
 		msg_pass =  'I just crossed level ' +str(user_level) +' in Recstacy\'s Caught In The Chronicle.'
 		try:
 			
-				graph.post(path = str(profile_id)+'/feed', message = msg_pass, caption = 'Caught In The Chronicle - Recstacy 2015' , link = 'treasurehunt.mkti.in')
+				graph.post(path = str(profile_id)+'/feed', message = msg_pass, caption = 'Caught In The Chronicle - Recstacy 2015' , link = 'chronicle.recstacy.in')
 		except:
 			pass
 		ui = userInfo.objects.get(user = request.facebook.user)
