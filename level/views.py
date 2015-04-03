@@ -16,9 +16,6 @@ import random
 
 @facebook_authorization_required
 def level_view(request,slug):
-	
-	if over.objects.all().exists():
-		return HttpResponse('The Hunt is Over!')
 
 	curr_level = level.objects.get(slug = slug)
 	ui = userInfo.objects.get(user = request.facebook.user)
@@ -55,8 +52,7 @@ def level_scrape(request):
 
 @facebook_authorization_required
 def check_answer(request):
-	if over.objects.all().exists():
-		return HttpResponse('The Hunt is Over.')
+
 
 	given_answer = request.POST['answer']
 	user_level = request.POST['level']
@@ -65,18 +61,10 @@ def check_answer(request):
 		token =	request.facebook.user.oauth_token.token
 		graph = GraphAPI(token)
 		profile_id = request.facebook.user.facebook_id
-		msg_win =  'I just won MUKTI 2015\'s Online Treasure Hunt.'
-		msg_pass =  'I just crossed level ' +str(user_level) +' in MUKTI\'s Online Treasure Hunt.'
+		msg_pass =  'I just crossed level ' +str(user_level) +' in Recstacy\'s Caught In The Chronicle.'
 		try:
-			if level.objects.filter(number = curr_level.number+1).exists():
-				graph.post(path = str(profile_id)+'/feed', message = msg_pass, caption = 'Online Treasure Hunt - Mukti 2015' , link = 'treasurehunt.mkti.in')
-			else:
-				ov = over()
-				ov.winner = request.facebook.user
-				ov.save()
-				graph.post(path = str(profile_id)+'/feed', message = msg_win, caption = 'Online Treasure Hunt - Mukti 2015' , link = 'treasurehunt.mkti.in')
-
-
+			
+				graph.post(path = str(profile_id)+'/feed', message = msg_pass, caption = 'Caught In The Chronicle - Recstacy 2015' , link = 'treasurehunt.mkti.in')
 		except:
 			pass
 		ui = userInfo.objects.get(user = request.facebook.user)
