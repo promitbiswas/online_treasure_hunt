@@ -15,7 +15,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'oth_2015',                      # Or path to database file if using sqlite3.
+        'NAME': 'caught_in_chronicle',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'root',
         'PASSWORD': '123456',
@@ -137,9 +137,10 @@ MEDIA_URL = '/media/'
 
 FACEBOOK_APPLICATION_ID = '183216621874530'
 FACEBOOK_APPLICATION_SECRET_KEY = '60d4f52542b5fb445a08c49449982163'
-FACEBOOK_APPLICATION_NAMESPACE = 'muktinitdurgapur'
+FACEBOOK_APPLICATION_NAMESPACE = 'recstacynitdurgapur'
 FACEBOOK_APPLICATION_INITIAL_PERMISSIONS = ['read_stream', 'publish_stream']
-FANDJANGO_SITE_URL = 'http://localhost:8000'
+FANDJANGO_SITE_URL = 'http://chronicle.recstacy.in'
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',
