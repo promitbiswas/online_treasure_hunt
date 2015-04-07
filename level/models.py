@@ -6,7 +6,7 @@ class level(models.Model):
 	slug = models.SlugField()
 	title = models.CharField(max_length=200)
 	source = models.TextField()
-	photo = models.CharField(max_length=200)
+	photo = models.ImageField(upload_to='images/')
 	text = models.TextField()
 	js = models.TextField()
 	answer = models.CharField(max_length=200)
